@@ -1,31 +1,38 @@
-import type { ColumnType, Generated } from 'kysely';
+import type { ColumnType } from "kysely";
 
-// Add these interfaces to your types.ts
-export interface Movie {
+export type Generated<T> = T extends ColumnType<infer S, infer I, infer U>
+  ? ColumnType<S, I | undefined, U>
+  : ColumnType<T, T | undefined, T>;
+
+export interface Bookings {
   id: Generated<number>;
+  userId: number;
+  screeningId: number;
+  numberOfTickets: number;
+}
+
+export interface Movies {
+  id: number | null;
   title: string;
-  year: number;
+  year: number | null;
 }
 
 export interface Screenings {
   id: Generated<number>;
   movieId: number;
-  timestamp: string; // or Date if you prefer
+  timestamp: string;
   totalTickets: number;
   ticketsLeft: number;
 }
 
-export interface Bookings {
+export interface Users {
   id: Generated<number>;
-  screeningId: number;
-  userId: number; // Assuming you have a users table
-  numberOfTickets: number;
+  email: string;
 }
 
-// Extend the DB interface
 export interface DB {
-  movie: Movie;
-  screenings: Screenings;
   bookings: Bookings;
-  // ... include other tables from movies.db as needed
+  movies: Movies;
+  screenings: Screenings;
+  users: Users;
 }
