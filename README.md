@@ -6,7 +6,6 @@ This project aims to build a movie ticket booking system using the existing movi
 
 ## Requirements
 
-### Users
 
 1. **Get List of Movies**
    - Endpoint: `/movies`
@@ -20,7 +19,7 @@ This project aims to build a movie ticket booking system using the existing movi
    - Output: List of available screenings with session information (timestamp, available tickets, total tickets) and movie details (title, year)
 
 3. **Get List of Booked Tickets**
-   - Endpoint: `/tickets`
+   - Endpoint: `/bookings`
    - Method: `GET`
    - Output: List of booked tickets for the user
 
@@ -30,21 +29,10 @@ This project aims to build a movie ticket booking system using the existing movi
    - Input: Movie ID, Screening timestamp, Number of tickets to book
    - Output: Confirmation of the booking
 
-### Administrators
-
-1. **Create New Viewing Screenings**
-   - Endpoint: `/admin/screenings`
+5. **Create New  Screenings**
+   - Endpoint: `/screenings`
    - Method: `POST`
    - Input: Movie ID, Screening timestamp, Total tickets allocation
    - Output: Confirmation of the new screening
 
-2. **Optional: Delete Empty Screenings**
-   - Endpoint: `/admin/screenings/{screeningId}`
-   - Method: `DELETE`
-   - Output: Confirmation of deletion if the screening is empty
 
-3. **Optional: Change Screening's Ticket Allocation**
-   - Endpoint: `/admin/screenings/{screeningId}`
-   - Method: `PUT`
-   - Input: New total tickets allocation
-   - Output: Confirmation of the ticket allocation change
