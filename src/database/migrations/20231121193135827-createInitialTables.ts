@@ -1,7 +1,6 @@
 import { Kysely, SqliteDatabase } from 'kysely';
 
 export async function up(db: Kysely<SqliteDatabase>) {
-  // if the database already has movies table, don't try to create a new one
   await db.schema
     .createTable('movies')
     .addColumn('id', 'integer', (column) =>
