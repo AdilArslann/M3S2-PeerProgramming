@@ -3,7 +3,7 @@ import type { Users } from '@/database';
 
 type Record = Users;
 const schema = z.object({
-  id: z.number(),
+  id: z.coerce.number().int().positive(),
   email: z.string().email(),
 });
 

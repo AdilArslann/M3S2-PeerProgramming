@@ -7,8 +7,7 @@ export async function up(db: Kysely<SqliteDatabase>) {
       column.primaryKey().autoIncrement().notNull()
     )
     .addColumn('title', 'text', (column) => column.notNull())
-    .addColumn('description', 'text', (column) => column.notNull())
-    .addColumn('image_url', 'text', (column) => column.notNull())
+    .addColumn('year', 'integer', (column) => column.notNull())
     .execute();
 
   await db.schema
