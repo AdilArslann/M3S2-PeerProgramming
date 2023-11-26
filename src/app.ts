@@ -1,9 +1,7 @@
 import express from 'express';
-import articles from './modules/articles/controller';
 // import categories from './modules/categories/controller';
-import comments from './modules/comments/controller';
 import users from './modules/users/controller';
-import jsonErrorHandler from './middleware/jsonErrors';
+import jsonErrorHandler from './middleware/jsonError';
 import { type Database } from './database';
 
 export default function createApp(db: Database) {
@@ -11,9 +9,7 @@ export default function createApp(db: Database) {
 
   app.use(express.json());
 
-  app.use('/movies', articles(db));
   // app.use('/categories', categories(db));
-  app.use('/comments', comments(db));
   app.use('/users', users(db));
 
   app.use(jsonErrorHandler);
